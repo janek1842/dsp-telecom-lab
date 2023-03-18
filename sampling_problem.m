@@ -15,6 +15,8 @@ x = cos(2*pi*(0*t+0.5*df*t.^2));
 figure(1);
 title('fs=1000 Hz ; df=200');
 plot(t,x,'o-'); grid; title('Signal x(t)'); xlabel('time [s]'); ylabel('Amplitude');
+
+pause();
 sound(x,fs);
 
 % OBSERVATION
@@ -52,6 +54,8 @@ x = cos(2*pi*(0*t+0.5*df*t.^2));
 figure(3);
 title('fs=8000 Hz ; df=2000');
 plot(t,x,'o-'); grid; title('Signal x(t)'); xlabel('time [s]'); ylabel('Amplitude');
+
+pause();
 sound(x,fs);
 
 % OBSERVATION
