@@ -25,7 +25,7 @@ end
 p=[2,4,6,8,10,12,14,16];
 
 figure(1);
-plot(p,err,'r*-')
+plot([2^2,2^4,2^6,2^8,2^10,2^12,2^14,2^16],err,'r*-')
 title('Difference between recursive radix-2 and MATLAB fft')
 xlabel('p');
 ylabel('Error')
@@ -46,11 +46,11 @@ ylabel('Error')
 % That's what prof proved in conclusion 2 !
 
 % Final conclusion: As the number of operation performed increases logarythmic 
-% (in another words exponential)the error also reminds exponential curve 
+% the error also reminds exponential curve 
 
 % BONUS! time comparison between MATLAB fft and radix-2
 figure(2);
-plot(p,timeComparison,'b*-')
+plot([2^2,2^4,2^6,2^8,2^10,2^12,2^14,2^16],timeComparison,'b*-')
 title('Time performance: (radix-2 time) - (MATLAB fft time)')
 xlabel('p');
 ylabel('Time [s]')
