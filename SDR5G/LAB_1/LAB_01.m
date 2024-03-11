@@ -2,7 +2,6 @@
 clc; clear all; close all;
 
 Nfft = 512; % number of subcarriers
-
 %---------------------------------------------------------------
 
 % QPSK
