@@ -28,7 +28,7 @@ iqTAB16 = [ -3-3*j, -3-1*j, -3+3*j, -3+1*j, ...
 SNRS = [-70,-60,-50,-40,-30,-25,-20,-15,-10,-5,0];
 results=zeros(size(SNRS,2),6);
 
-myText = 'testtesttesttesttesttesttesttesttesttesttesttest';
+myText = 'te';
 repetitions=10;
 
 for mm = 1:6
@@ -36,7 +36,7 @@ for mm = 1:6
         for z = 1:length(SNRS)
             tic
             finaltext = ''; % decoded text
-            
+
             SNR = SNRS(z);
             if mm==1
                 iqTAB = iqTAB4;
@@ -66,34 +66,34 @@ for mm = 1:6
 
             Ns = length(iqTAB);                           % length of the IQ states table
             numTX=text2numbers(myText,N_BITS_PER_SYMBOL); % Transforming input text to numbers
-            
-            numTX = numTX(1:end-1,:);     
+
+            numTX = numTX(1:end-1,:);
             iqTX = numbers2IQ(numTX,mod,iqTAB);           % IQ carrier states for selected letter
             X = zeros(Nfft,1);
-           
-            for i = 1:Ns:length(iqTX)    
-                
+
+            for i = 1:Ns:length(iqTX)
+
                 X(1:Ns,1) = iqTX(i:i+Ns-1);      % mapping IQ states to carriers
-                
-                x = ifft(ifftshift(X));                     % TX: signal synthesis and transmission  
+
+                x = ifft(ifftshift(X));                     % TX: signal synthesis and transmission
                 y = awgn(x,SNR,'measured');                            % channel: addition of noise for given SNR [dB]
-                
+
                 Y = fftshift( fft( y ) );                   % RX: signal analysis
                 iqRX = Y(1:Ns);                             % demapping IQ states from carriers
-                
+
                 mynumb= numbers2text(IQ2numbers(iqRX,mod),N_BITS_PER_SYMBOL); % Transforming bits to text
-            
-                finaltext = append(finaltext,mynumb);    
+
+                finaltext = append(finaltext,mynumb);
             end
-                    
+
             numDifferences = 0;
-            
-            for i = 1:strlength(finaltext)
+
+            for i = 1:length(finaltext)
                 if myText(1,i) ~= finaltext(1,i)
                     numDifferences = numDifferences + 1; % Increment the counter for differences
                 end
             end
-            
+
             % Display the number of errors
             fprintf('Number of errors for %s modulation: %d\n', mod,numDifferences);
             fprintf('%s %s\n', "DECODED TEXT:", finaltext);

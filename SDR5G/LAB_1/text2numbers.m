@@ -1,7 +1,8 @@
 function [numbers, bitsnum, bitschar] = text2numbers( text, Nbits )
 % text to IQ state numbers conversion
 
-bitschar = dec2bin( text, 8 );               % text array, letters in rows,'0'/'1'
+disp(text);
+bitschar = dec2bin(double(text), 8 );                % text array, letters in rows,'0'/'1'
 [rows,cols] = size( bitschar );              % matrix size
 N = rows*cols;                               % number of all bits
 work = reshape( bitschar',[ 1, N] )';        % bits in one column
