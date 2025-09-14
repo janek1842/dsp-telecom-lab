@@ -36,6 +36,7 @@ endfor
 
 figure(1)
 plot(sizes,func_time, 'bo',sizes,iterative_time, 'ro', sizes,inter_time, 'go');
+legend ('func','iterative','intermediate');
 ylabel('Processing time [s]');
 xlabel('Vector size');
 title("Comparison of two different methods of generating the dot product");
