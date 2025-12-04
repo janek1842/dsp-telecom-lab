@@ -1,4 +1,5 @@
-# FM modulation and demodulation
+# Service up down conversion
+
 import numpy as np
 import matplotlib.pyplot as plt
 from numpy.fft import fft,ifft
